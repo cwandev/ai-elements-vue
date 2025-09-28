@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@repo/shadcn-vue/compo
 import ActionsHover from '~/examples/actions-hover.vue'
 import Actions from '~/examples/actions.vue'
 import Branch from '~/examples/branch.vue'
+import CodeBlock from '~/examples/code-block.vue'
 import Conversation from '~/examples/conversation.vue'
 import MessageMarkdown from '~/examples/message-markdown.vue'
 import Message from '~/examples/message.vue'
@@ -10,6 +11,7 @@ import PromptInput from '~/examples/prompt-input.vue'
 import Response from '~/examples/response.vue'
 
 const components = [
+  { name: 'CodeBlock', Component: CodeBlock },
   { name: 'Message', Component: Message },
   { name: 'Actions', Component: Actions },
   { name: 'Branch', Component: Branch },
@@ -18,6 +20,7 @@ const components = [
   { name: 'Conversation', Component: Conversation },
   { name: 'Response', Component: Response },
   { name: 'MessageMarkdown', Component: MessageMarkdown },
+
 ]
 </script>
 
