@@ -176,7 +176,6 @@ const statusStyles = {
   </div>
 </template>
 ```
-
 ```vue [ChainOfThoughtSearchResults.vue]
 <script setup lang="ts">
 import type { HtmlHTMLAttributes } from 'vue'
@@ -286,7 +285,6 @@ const props = defineProps<{
   </div>
 </template>
 ```
-
 
 ```ts [context.ts]
 import type { InjectionKey, Ref } from 'vue'
