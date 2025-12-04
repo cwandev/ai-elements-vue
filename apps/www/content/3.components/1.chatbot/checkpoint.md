@@ -12,12 +12,12 @@ The `Checkpoint` component provides a way to mark specific points in a conversat
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add checkpoint
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/checkpoint.json
@@ -77,7 +77,7 @@ const slots = useSlots()
 </template>
 ```
 
-```vue [CheckpointTrigger.vue]
+```vue [CheckpointTrigger.vue] height=500 collapse
 <script lang="ts" setup>
 import type { ButtonVariants } from '@repo/shadcn-vue/components/ui/button'
 import { Button } from '@repo/shadcn-vue/components/ui/button'
@@ -146,7 +146,7 @@ Build a chat interface with conversation checkpoints that allow users to restore
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue]
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import { useChat } from '@ai-sdk/vue'
 import { nanoid } from 'nanoid'

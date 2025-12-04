@@ -1,10 +1,10 @@
 ---
 title: Loader
-description:
+description: A spinning loader component for indicating loading states in AI applications.
 icon: lucide:loader
 ---
 
-The `Loader`  component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.
+The `Loader` component provides a spinning animation to indicate loading states in your AI applications. It includes both a customizable wrapper component and the underlying icon for flexible usage.
 
 :::ComponentLoader{label="Preview" componentName="Loader"}
 :::
@@ -12,12 +12,12 @@ The `Loader`  component provides a spinning animation to indicate loading states
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add loader
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/loader.json
@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 ```
 
-```vue [LoaderIcon.vue]
+```vue [LoaderIcon.vue] height=500 collapse
 <script setup lang="ts">
 interface Props {
   size?: number
@@ -101,25 +101,13 @@ withDefaults(defineProps<Props>(), {
   ```
 :::
 
-## Usage
-
-```vue
-<script setup lang="ts">
-import { Loader } from '@/components/ai-elements/loader'
-</script>
-
-<template>
-  <Loader />
-</template>
-```
-
 ## Usage with AI SDK
 
 Build a simple chat app that displays a loader before it the response streans by using `status === "submitted"`.
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue]
+```vue [pages/index.vue] height=500 collapse
 <script lang="ts" setup>
 import { useChat } from '@ai-sdk/vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'

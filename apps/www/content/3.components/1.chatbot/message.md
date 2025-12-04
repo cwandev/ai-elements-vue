@@ -6,18 +6,18 @@ icon: lucide:message-circle
 
 The `Message` component suite provides a complete set of tools for building chat interfaces. It includes components for displaying messages from users and AI assistants, managing multiple response branches, adding action buttons, and rendering markdown content.
 
-:::ComponentLoader{label="Message" componentName="Message"}
+:::ComponentLoader{label="Preview" componentName="Message"}
 :::
 
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add message
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/message.json
@@ -628,18 +628,6 @@ export { default as MessageToolbar } from './MessageToolbar.vue'
 ```
 ::
 
-## Usage
-
-```ts
-import { Message, MessageContent } from '@/components/ai-elements/message'
-```
-
-```vue
-<Message from="user">
-  <MessageContent>Hi there!</MessageContent>
-</Message>
-```
-
 ## Usage with AI SDK
 
 Build a simple chat UI where the user can copy or regenerate the most recent message.
@@ -747,18 +735,129 @@ function handleSubmit() {
 
 - Displays messages from both user and AI assistant with distinct styling and automatic alignment
 - Minimalist flat design with user messages in secondary background and assistant messages full-width
-- Response branching with navigation controls to switch between multiple AI response versions
-- Markdown rendering with GFM support (tables, task lists, strikethrough), math equations, and smart streaming
-- Action buttons for common operations (retry, like, dislike, copy, share) with tooltips and state management
-- File attachments display with support for images and generic files with preview and remove functionality
+- **Response branching** with navigation controls to switch between multiple AI response versions
+- **Markdown rendering** with GFM support (tables, task lists, strikethrough), math equations, and smart streaming
+- **Action buttons** for common operations (retry, like, dislike, copy, share) with tooltips and state management
+- **File attachments** display with support for images and generic files with preview and remove functionality
 - Code blocks with syntax highlighting and copy-to-clipboard functionality
 - Keyboard accessible with proper ARIA labels
 - Responsive design that adapts to different screen sizes
 - Seamless light/dark theme integration
 
-::alert{icon="lucide:info"}
+::alert{type="info" icon="lucide:info"}
   Branching is an advanced use case you can implement to suit your needs. While the AI SDK does not provide built-in branching support, you have full flexibility to design and manage multiple response paths.
 ::
+
+## Usage with AI SDK
+
+Build a simple chat UI where the user can copy or regenerate the most recent message.
+
+Add the following component to your frontend:
+
+```vue [pages/index.vue] height=500 collapse
+<script setup lang="ts">
+import { useChat } from '@ai-sdk/vue'
+import { CopyIcon, RefreshCcwIcon } from 'lucide-vue-next'
+import { ref } from 'vue'
+
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from '@/components/ai-elements/conversation'
+import { Message, MessageAction, MessageActions, MessageContent, MessageResponse } from '@/components/ai-elements/message'
+import {
+  PromptInput,
+  PromptInputSubmit,
+  PromptInputTextarea,
+} from '@/components/ai-elements/prompt-input'
+
+const { messages, append, status, reload } = useChat()
+const input = ref('')
+
+function handleSubmit() {
+  if (input.value.trim()) {
+    append({ role: 'user', content: input.value })
+    input.value = ''
+  }
+}
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text)
+}
+</script>
+
+<template>
+  <div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+    <div class="flex flex-col h-full">
+      <Conversation>
+        <ConversationContent>
+          <template v-for="(message, messageIndex) in messages" :key="message.id">
+            <template v-if="message.parts">
+              <template v-for="(part, i) in message.parts" :key="`${message.id}-${i}`">
+                <template v-if="part.type === 'text'">
+                  <Message :from="message.role">
+                    <MessageContent>
+                      <MessageResponse>{{ part.text }}</MessageResponse>
+                    </MessageContent>
+                  </Message>
+
+                  <MessageActions
+                    v-if="message.role === 'assistant' && messageIndex === messages.length - 1"
+                  >
+                    <MessageAction label="Retry" @click="reload()">
+                      <RefreshCcwIcon class="size-3" />
+                    </MessageAction>
+                    <MessageAction label="Copy" @click="copyToClipboard(part.text)">
+                      <CopyIcon class="size-3" />
+                    </MessageAction>
+                  </MessageActions>
+                </template>
+              </template>
+            </template>
+
+            <template v-else>
+              <Message :from="message.role">
+                <MessageContent>
+                  <MessageResponse>{{ message.content }}</MessageResponse>
+                </MessageContent>
+              </Message>
+
+              <MessageActions
+                v-if="message.role === 'assistant' && messageIndex === messages.length - 1"
+              >
+                <MessageAction label="Retry" @click="reload()">
+                  <RefreshCcwIcon class="size-3" />
+                </MessageAction>
+                <MessageAction label="Copy" @click="copyToClipboard(message.content)">
+                  <CopyIcon class="size-3" />
+                </MessageAction>
+              </MessageActions>
+            </template>
+          </template>
+        </ConversationContent>
+        <ConversationScrollButton />
+      </Conversation>
+
+      <PromptInput
+        class="mt-4 w-full max-w-2xl mx-auto relative bg-transparent border-0"
+        @submit="handleSubmit"
+      >
+        <PromptInputTextarea
+          v-model="input"
+          placeholder="Say something..."
+          class="pr-12"
+        />
+        <PromptInputSubmit
+          :status="status === 'streaming' ? 'streaming' : 'ready'"
+          :disabled="!input.trim()"
+          class="absolute bottom-1 right-1"
+        />
+      </PromptInput>
+    </div>
+  </div>
+</template>
+```
 
 ## Props
 

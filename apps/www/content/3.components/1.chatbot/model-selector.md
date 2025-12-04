@@ -12,12 +12,12 @@ The `Model Selector` component provides a searchable command palette interface f
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add model-selector
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/model-selector.json
@@ -30,7 +30,7 @@ The `Model Selector` component provides a searchable command palette interface f
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [ModelSelector.vue] height=260 collapse
+```vue [ModelSelector.vue]
 <script setup lang="ts">
 import { Dialog } from '@repo/shadcn-vue/components/ui/dialog'
 </script>
@@ -42,7 +42,7 @@ import { Dialog } from '@repo/shadcn-vue/components/ui/dialog'
 </template>
 ```
 
-```vue [ModelSelectorTrigger.vue] height=260 collapse
+```vue [ModelSelectorTrigger.vue]
 <script setup lang="ts">
 import { DialogTrigger } from '@repo/shadcn-vue/components/ui/dialog'
 </script>
@@ -54,7 +54,7 @@ import { DialogTrigger } from '@repo/shadcn-vue/components/ui/dialog'
 </template>
 ```
 
-```vue [ModelSelectorContent.vue] height=260 collapse
+```vue [ModelSelectorContent.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Command } from '@repo/shadcn-vue/components/ui/command'
@@ -86,7 +86,7 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 ```
 
-```vue [ModelSelectorDialog.vue] height=260 collapse
+```vue [ModelSelectorDialog.vue]
 <script setup lang="ts">
 import { CommandDialog } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -98,7 +98,7 @@ import { CommandDialog } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorInput.vue] height=260 collapse
+```vue [ModelSelectorInput.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { CommandInput } from '@repo/shadcn-vue/components/ui/command'
@@ -119,7 +119,7 @@ const props = defineProps<Props>()
 </template>
 ```
 
-```vue [ModelSelectorList.vue] height=260 collapse
+```vue [ModelSelectorList.vue]
 <script setup lang="ts">
 import { CommandList } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -131,7 +131,7 @@ import { CommandList } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorEmpty.vue] height=260 collapse
+```vue [ModelSelectorEmpty.vue]
 <script setup lang="ts">
 import { CommandEmpty } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -143,7 +143,7 @@ import { CommandEmpty } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorGroup.vue] height=260 collapse
+```vue [ModelSelectorGroup.vue]
 <script setup lang="ts">
 import { CommandGroup } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -155,7 +155,7 @@ import { CommandGroup } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorItem.vue] height=260 collapse
+```vue [ModelSelectorItem.vue]
 <script setup lang="ts">
 import { CommandItem } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -167,7 +167,7 @@ import { CommandItem } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorShortcut.vue] height=260 collapse
+```vue [ModelSelectorShortcut.vue]
 <script setup lang="ts">
 import { CommandShortcut } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -179,7 +179,7 @@ import { CommandShortcut } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorSeparator.vue] height=260 collapse
+```vue [ModelSelectorSeparator.vue]
 <script setup lang="ts">
 import { CommandSeparator } from '@repo/shadcn-vue/components/ui/command'
 </script>
@@ -189,7 +189,7 @@ import { CommandSeparator } from '@repo/shadcn-vue/components/ui/command'
 </template>
 ```
 
-```vue [ModelSelectorLogo.vue] height=260 collapse
+```vue [ModelSelectorLogo.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -214,7 +214,7 @@ const props = defineProps<Props>()
 </template>
 ```
 
-```vue [ModelSelectorLogoGroup.vue] height=260 collapse
+```vue [ModelSelectorLogoGroup.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -241,7 +241,7 @@ const props = defineProps<Props>()
 </template>
 ```
 
-```vue [ModelSelectorName.vue] height=260 collapse
+```vue [ModelSelectorName.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -263,7 +263,7 @@ const props = defineProps<Props>()
 </template>
 ```
 
-```ts [index.ts] height=260 collapse
+```ts [index.ts]
 export { default as ModelSelector } from './ModelSelector.vue'
 export { default as ModelSelectorContent } from './ModelSelectorContent.vue'
 export { default as ModelSelectorDialog } from './ModelSelectorDialog.vue'

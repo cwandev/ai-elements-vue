@@ -1,6 +1,6 @@
 ---
 title: Open In Chat
-description:
+description: A dropdown menu for opening queries in various AI chat platforms including ChatGPT, Claude, T3, Scira, and v0.
 icon: lucide:message-circle-more
 ---
 
@@ -12,12 +12,12 @@ The `OpenIN` component provides a dropdown menu that allows users to open querie
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add open-in-chat
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/open-in-chat.json
@@ -320,7 +320,7 @@ const href = computed(() => providers.v0.createUrl(query))
 </template>
 ```
 
-```vue [providers/icons/Scira.vue]
+```vue [providers/icons/Scira.vue] height=500 collapse
 <template>
   <svg
     fill="none"
@@ -408,7 +408,7 @@ export { default as SciraIcon } from './Scira.vue'
 export { default as V0Icon } from './V0.vue'
 ```
 
-```ts [providers/index.ts]
+```ts [providers/index.ts] height=500 collapse
 import type { Component } from 'vue'
 import { MessageCircleIcon } from 'lucide-vue-next'
 import {
@@ -514,26 +514,6 @@ export { default as OpenInT3 } from './providers/items/OpenInT3.vue'
 export { default as OpenInv0 } from './providers/items/OpenInv0.vue'
 ```
 :::
-
-## Usage
-
-```ts
-import { OpenIn, OpenInChatGPT, OpenInClaude, OpenInContent, OpenInCursor, OpenInScira, OpenInT3, OpenInTrigger, OpenInv0, } from '@/components/ai-elements/open-in-chat'
-```
-
-```vue
-  <OpenIn query="How can I implement authentication in Nuxt.js">
-    <OpenInTrigger />
-    <OpenInContent>
-      <OpenInChatGPT />
-      <OpenInClaude />
-      <OpenInCursor />
-      <OpenInT3 />
-      <OpenInScira />
-      <OpenInv0 />
-    </OpenInContent>
-  </OpenIn>
-```
 
 ## Features
 

@@ -14,12 +14,12 @@ It features modern card styling with backdrop blur and flexbox layout for action
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add toolbar
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/toolbar.json
@@ -32,7 +32,7 @@ It features modern card styling with backdrop blur and flexbox layout for action
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Toolbar.vue] height=260 collapse
+  ```vue [Toolbar.vue] height=500 collapse
   <script setup lang="ts">
   import type { HTMLAttributes } from 'vue'
   import { cn } from '@repo/shadcn-vue/lib/utils'

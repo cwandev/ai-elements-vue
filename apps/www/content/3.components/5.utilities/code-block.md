@@ -1,6 +1,6 @@
 ---
 title: Code Block
-description:
+description: Provides syntax highlighting, line numbers, and copy to clipboard functionality for code blocks.
 icon: lucide:code
 ---
 
@@ -12,12 +12,12 @@ The `CodeBlock` component provides syntax highlighting, line numbers, and copy t
 ## Install using CLI
 
 ::::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add code-block
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/code-block.json
@@ -30,7 +30,7 @@ The `CodeBlock` component provides syntax highlighting, line numbers, and copy t
 Copy and paste the following files into the same folder.
 
 ::::code-group
-  ```vue [CodeBlock.vue]
+  ```vue [CodeBlock.vue] height=500 collapse
   <script setup lang="ts">
   import type { BundledLanguage } from 'shiki'
   import type { HTMLAttributes } from 'vue'
@@ -113,7 +113,7 @@ Copy and paste the following files into the same folder.
   </template>
   ```
 
-  ```vue [CodeBlockCopyButton.vue]
+  ```vue [CodeBlockCopyButton.vue] height=500 collapse
   <script setup lang="ts">
   import type { HTMLAttributes } from 'vue'
   import { Button } from '@repo/shadcn-vue/components/ui/button'
@@ -210,7 +210,7 @@ Copy and paste the following files into the same folder.
   export const CodeBlockKey: InjectionKey<CodeBlockContext> = Symbol('CodeBlock')
   ```
 
-  ```ts [utils.ts]
+  ```ts [utils.ts] height=500 collapse
   import type { Element } from 'hast'
   import type { BundledLanguage, ShikiTransformer } from 'shiki'
   import { codeToHtml } from 'shiki'
@@ -266,21 +266,6 @@ Copy and paste the following files into the same folder.
   ```
 ::::
 
-## Usage
-
-```vue
-import { CodeBlock, CodeBlockCopyButton } from '@/components/ai-elements/code-block'
-```
-
-```vue
-<CodeBlock :code="console.log('hello world')" language="javascript">
-  <CodeBlockCopyButton
-    @copy="() => console.log('Copied code to clipboard')"
-    @error="() => console.error('Failed to copy code to clipboard')"
-  />
-</CodeBlock>
-```
-
 ## Usage with AI SDK
 
 Build a simple code generation tool using the [`experimental_useObject`](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-object) hook.
@@ -288,7 +273,7 @@ Build a simple code generation tool using the [`experimental_useObject`](https:/
 Add the following component to your frontend:
 
 ::::code-group
-```vue [app/page.vue]
+```vue [app/page.vue] height=500 collapse
 <script setup lang="ts">
 import { useObject } from '@ai-sdk/vue'
 import { ref } from 'vue'

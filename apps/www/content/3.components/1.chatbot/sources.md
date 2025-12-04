@@ -1,6 +1,6 @@
 ---
 title: Sources
-description:
+description: A component that allows a user to view the sources or citations used to generate a response.
 icon: lucide:book-open
 ---
 
@@ -12,12 +12,12 @@ The `Sources` component allows a user to view the sources or citations used to g
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add sources
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/sources.json
@@ -139,33 +139,13 @@ export { default as SourcesTrigger } from './SourcesTrigger.vue'
 ```
 :::
 
-## Usage
-
-```ts
-import {
-  Source,
-  Sources,
-  SourcesContent,
-  SourcesTrigger,
-} from '@/components/ai-elements/sources'
-```
-
-```vue
-<Sources>
-  <SourcesTrigger count="1" />
-  <SourcesContent>
-    <Source href="https://ai-sdk.dev" title="AI SDK" />
-  </SourcesContent>
-</Sources>
-```
-
 ## Usage with AI SDK
 
 Build a simple web search agent with Perplexity Sonar.
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue]
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import { useChat } from '@ai-sdk/vue'
 import { DefaultChatTransport } from 'ai'

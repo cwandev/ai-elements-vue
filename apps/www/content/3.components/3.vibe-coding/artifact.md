@@ -9,12 +9,12 @@ The `Artifact` component provides a structured container for displaying generate
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add artifact
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/artifact.json
@@ -54,7 +54,7 @@ Copy and paste the following code in the same folder.
   </template>
   ```
 
-  ```vue [ArtifactAction.vue]
+  ```vue [ArtifactAction.vue] height=500 collapse
   <script setup lang="ts">
   import type { ButtonVariants } from '@repo/shadcn-vue/components/ui/button'
   import type { LucideIcon } from 'lucide-vue-next'
@@ -151,7 +151,7 @@ Copy and paste the following code in the same folder.
   </template>
   ```
 
-  ```vue [ArtifactClose.vue]
+  ```vue [ArtifactClose.vue] height=500 collapse
   <script setup lang="ts">
   import type { ButtonVariants } from '@repo/shadcn-vue/components/ui/button'
   import { Button } from '@repo/shadcn-vue/components/ui/button'

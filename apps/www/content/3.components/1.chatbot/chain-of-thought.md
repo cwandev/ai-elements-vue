@@ -1,6 +1,6 @@
 ---
 title: Chain of Thought
-description:
+description: A collapsible component that visualizes AI reasoning steps with support for search results, images, and step-by-step progress indicators.
 icon: lucide:brain
 ---
 
@@ -12,12 +12,12 @@ The `ChainOfThought` component provides a visual representation of an AI's reaso
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add chain-of-thought
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/chain-of-thought.json
@@ -30,7 +30,7 @@ The `ChainOfThought` component provides a visual representation of an AI's reaso
 Copy and paste the following files into the same folder.
 
 :::code-group
-```vue [ChainOfThought.vue]
+```vue [ChainOfThought.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes, Ref } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -74,7 +74,7 @@ provide(ChainOfThoughtContextKey, isOpen as Ref<boolean>)
 </template>
 ```
 
-```vue [ChainOfThoughtHeader.vue]
+```vue [ChainOfThoughtHeader.vue] height=500 collapse
 <script setup lang="ts">
 import type { HtmlHTMLAttributes } from 'vue'
 import {
@@ -120,7 +120,7 @@ const { isOpen, setIsOpen } = useChainOfThought()
 </template>
 ```
 
-```vue [ChainOfThoughtStep.vue]
+```vue [ChainOfThoughtStep.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -223,7 +223,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ChainOfThoughtContent.vue]
+```vue [ChainOfThoughtContent.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import {
@@ -258,7 +258,7 @@ const { isOpen } = useChainOfThought()
 </template>
 ```
 
-```vue [ChainOfThoughtImage.vue]
+```vue [ChainOfThoughtImage.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -322,50 +322,15 @@ export { default as ChainOfThoughtStep } from './ChainOfThoughtStep.vue'
 ```
 :::
 
-## Usage
-
-```ts
-import {
-  ChainOfThought,
-  ChainOfThoughtContent,
-  ChainOfThoughtHeader,
-  ChainOfThoughtImage,
-  ChainOfThoughtSearchResult,
-  ChainOfThoughtSearchResults,
-  ChainOfThoughtStep,
-} from '@/components/ai-elements/chain-of-thought'
-```
-
-```vue
-<ChainOfThought defaultOpen>
-  <ChainOfThoughtHeader />
-  <ChainOfThoughtContent>
-    <ChainOfThoughtStep
-      label="Searching for information"
-      status="complete"
-    >
-     <template #icon>
-          <ImageIcon class="size-4" />
-        </template>
-      <ChainOfThoughtSearchResults>
-        <ChainOfThoughtSearchResult>
-          Result 1
-        </ChainOfThoughtSearchResult>
-      </ChainOfThoughtSearchResults>
-    </ChainOfThoughtStep>
-  </ChainOfThoughtContent>
-</ChainOfThought>
-```
-
 ## Features
 
-- Collapsible interface with smooth animations powered by Radix UI
+- Collapsible interface with smooth animations powered by Reka UI
 - Step-by-step visualization of AI reasoning process
 - Support for different step statuses (complete, active, pending)
 - Built-in search results display with badge styling
 - Image support with captions for visual content
 - Custom icons for different step types
-- Context-aware components using React Context API
+- Context-aware components using Inject/Provide API
 - Fully typed with TypeScript
 - Accessible with keyboard navigation support
 - Responsive design that adapts to different screen sizes

@@ -14,12 +14,12 @@ It includes modern card styling with backdrop blur and flexible positioning opti
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add panel
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/panel.json
@@ -32,7 +32,7 @@ It includes modern card styling with backdrop blur and flexible positioning opti
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Panel.vue] height=260 collapse
+  ```vue [Panel.vue]
   <script setup lang="ts">
   import type { PanelPositionType } from '@vue-flow/core'
   import type { HTMLAttributes } from 'vue'

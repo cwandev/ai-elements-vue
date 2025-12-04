@@ -14,12 +14,12 @@ It includes a modern, themed design with backdrop blur and card styling.
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add controls
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/controls.json
@@ -32,7 +32,7 @@ It includes a modern, themed design with backdrop blur and card styling.
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Controls.vue] height=260 collapse
+  ```vue [Controls.vue]
   <script setup lang="ts">
   import type { HTMLAttributes } from 'vue'
   import { cn } from '@repo/shadcn-vue/lib/utils'

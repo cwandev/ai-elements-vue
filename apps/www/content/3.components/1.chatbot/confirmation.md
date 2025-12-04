@@ -12,12 +12,12 @@ The `Confirmation` component provides a flexible system for displaying tool appr
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add confirmation
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/confirmation.json
@@ -30,7 +30,7 @@ The `Confirmation` component provides a flexible system for displaying tool appr
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Confirmation.vue] height=260 collapse
+```vue [Confirmation.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import type { HTMLAttributes } from 'vue'
@@ -63,7 +63,7 @@ provide(ConfirmationKey, {
 </template>
 ```
 
-```vue [ConfirmationTitle.vue] height=260 collapse
+```vue [ConfirmationTitle.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { AlertDescription } from '@repo/shadcn-vue/components/ui/alert'
@@ -84,7 +84,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ConfirmationRequest.vue] height=260 collapse
+```vue [ConfirmationRequest.vue]
 <script setup lang="ts">
 import { useConfirmationContext } from './context'
 
@@ -98,7 +98,7 @@ const { state } = useConfirmationContext()
 </template>
 ```
 
-```vue [ConfirmationAccepted.vue] height=260 collapse
+```vue [ConfirmationAccepted.vue]
 <script setup lang="ts">
 import { useConfirmationContext } from './context'
 
@@ -119,7 +119,7 @@ const { approval, state } = useConfirmationContext()
 </template>
 ```
 
-```vue [ConfirmationRejected.vue] height=260 collapse
+```vue [ConfirmationRejected.vue]
 <script setup lang="ts">
 import { useConfirmationContext } from './context'
 
@@ -140,7 +140,7 @@ const { approval, state } = useConfirmationContext()
 </template>
 ```
 
-```vue [ConfirmationActions.vue] height=260 collapse
+```vue [ConfirmationActions.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -166,7 +166,7 @@ const { state } = useConfirmationContext()
 </template>
 ```
 
-```vue [ConfirmationAction.vue] height=260 collapse
+```vue [ConfirmationAction.vue]
 <script setup lang="ts">
 import { Button } from '@repo/shadcn-vue/components/ui/button'
 </script>
@@ -178,7 +178,7 @@ import { Button } from '@repo/shadcn-vue/components/ui/button'
 </template>
 ```
 
-```ts [context.ts] height=260 collapse
+```ts [context.ts] height=500 collapse
 import type { ToolUIPart } from 'ai'
 import type { InjectionKey, Ref } from 'vue'
 import { inject } from 'vue'
@@ -244,7 +244,7 @@ Build a chat UI with tool approval workflow where dangerous tools require user c
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue] height=260 collapse
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import { useChat } from '@ai-sdk/vue'
@@ -372,7 +372,7 @@ const deleteTool = computed(() => {
 
 Add the following route to your backend:
 
-```ts [api/chat/route.ts] height=260 collapse
+```ts [server/api/chat.ts] height=500 collapse
 import { convertToModelMessages, streamText, UIMessage } from 'ai'
 import { z } from 'zod'
 
@@ -426,7 +426,7 @@ export default defineEventHandler(async (event) => {
 - Context-based state management for approval workflow
 - Conditional rendering based on approval state
 - Support for approval-requested, approval-responded, output-denied, and output-available states
-- Built on shadcn/ui Alert and Button components
+- Built on shadcn-vue Alert and Button components
 - TypeScript support with comprehensive type definitions
 - Customizable styling with Tailwind CSS
 - Keyboard navigation and accessibility support

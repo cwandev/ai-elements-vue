@@ -1,6 +1,6 @@
 ---
 title: Task
-description:
+description: A collapsible task list component for displaying AI workflow progress, with status indicators and optional descriptions.
 icon: lucide:book-check
 ---
 
@@ -12,12 +12,12 @@ The `Task` component provides a structured way to display task lists or workflow
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add task
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/task.json
@@ -30,7 +30,7 @@ The `Task` component provides a structured way to display task lists or workflow
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Task.vue]
+```vue [Task.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import {
@@ -65,7 +65,7 @@ provide('toggle', toggleOpen)
 </template>
 ```
 
-```vue [TaskTrigger.vue]
+```vue [TaskTrigger.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import {
@@ -101,7 +101,7 @@ const props = defineProps<TaskTriggerProps>()
 </template>
 ```
 
-```vue [TaskContent.vue]
+```vue [TaskContent.vue] height=500 collapse
 <script setup lang='ts'>
 import type { HTMLAttributes } from 'vue'
 import {
@@ -180,36 +180,13 @@ export { default as TaskTrigger } from './TaskTrigger.vue'
 ```
 :::
 
-## Usage
-
-```ts
-import {
-  Task,
-  TaskContent,
-  TaskItem,
-  TaskItemFile,
-  TaskTrigger,
-} from '@/components/ai-elements/task'
-```
-
-```vue
-<Task class="w-full">
-  <TaskTrigger title="Found project files" />
-  <TaskContent>
-    <TaskItem>
-      Read <TaskItemFile>index.md</TaskItemFile>
-    </TaskItem>
-  </TaskContent>
-</Task>
-```
-
 ## Usage with AI SDK
 
 Build a mock async programming agent using `experimental_generateObject`.
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue]
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import { experimental_useObject as useObject } from '@ai-sdk/vue'
 import {
@@ -306,7 +283,7 @@ function handleSubmit(taskType: string) {
 
 Add the following route to your backend:
 
-```ts [server/api/agent.ts]
+```ts [server/api/agent.ts] height=500 collapse
 import { streamObject } from 'ai'
 import { z } from 'zod'
 

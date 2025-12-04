@@ -1,6 +1,6 @@
 ---
 title: Queue
-description:
+description: A comprehensive queue component system for displaying message lists, todos, and collapsible task sections in AI applications.
 icon: lucide:list-check
 ---
 
@@ -12,12 +12,12 @@ The `Queue` component provides a flexible system for displaying lists of message
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add queue
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/queue.json
@@ -439,40 +439,6 @@ export { default as QueueSectionLabel } from './QueueSectionLabel.vue'
 export { default as QueueSectionTrigger } from './QueueSectionTrigger.vue'
 ```
 :::
-
-## Usage
-
-```ts
-import {
-  Queue,
-  QueueItem,
-  QueueItemContent,
-  QueueItemIndicator,
-  QueueList,
-  QueueSection,
-  QueueSectionContent,
-  QueueSectionLabel,
-  QueueSectionTrigger,
-} from '@/components/ai-elements/queue'
-```
-
-```vue
-<Queue>
-  <QueueSection>
-    <QueueSectionTrigger>
-      <QueueSectionLabel :count="3" label="Tasks" />
-    </QueueSectionTrigger>
-    <QueueSectionContent>
-      <QueueList>
-        <QueueItem>
-          <QueueItemIndicator />
-          <QueueItemContent>Analyze user requirements</QueueItemContent>
-        </QueueItem>
-      </QueueList>
-    </QueueSectionContent>
-  </QueueSection>
-</Queue>
-```
 
 ## Features
 

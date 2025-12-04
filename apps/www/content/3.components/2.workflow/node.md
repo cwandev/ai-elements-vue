@@ -14,12 +14,12 @@ It includes support for connection handles, structured layouts, and consistent s
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add node
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/node.json
@@ -32,7 +32,7 @@ It includes support for connection handles, structured layouts, and consistent s
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Node.vue] height=260 collapse
+  ```vue [Node.vue] height=500 collapse
   <script setup lang="ts">
   import type { HTMLAttributes } from 'vue'
   import Card from '@repo/shadcn-vue/components/ui/card/Card.vue'

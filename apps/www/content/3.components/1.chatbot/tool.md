@@ -12,12 +12,12 @@ The `Tool` component displays a collapsible interface for showing/hiding tool de
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add tool
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/tool.json
@@ -30,7 +30,7 @@ The `Tool` component displays a collapsible interface for showing/hiding tool de
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Tool.vue] height=260 collapse
+```vue [Tool.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Collapsible } from '@repo/shadcn-vue/components/ui/collapsible'
@@ -51,7 +51,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ToolStatusBadge.vue] height=260 collapse
+```vue [ToolStatusBadge.vue] height=500 collapse
 <!-- StatusBadge.vue -->
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
@@ -117,7 +117,7 @@ const iconClass = computed(() => {
 </template>
 ```
 
-```vue [ToolHeader.vue] height=260 collapse
+```vue [ToolHeader.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import type { HTMLAttributes } from 'vue'
@@ -184,7 +184,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ToolInput.vue] height=260 collapse
+```vue [ToolInput.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import type { HTMLAttributes } from 'vue'
@@ -219,7 +219,7 @@ const formattedInput = computed(() => {
 </template>
 ```
 
-```vue [ToolOutput.vue] height=260 collapse
+```vue [ToolOutput.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import type { HTMLAttributes } from 'vue'
@@ -291,7 +291,7 @@ const formattedOutput = computed(() => {
 </template>
 ```
 
-```ts [index.ts] height=260 collapse
+```ts [index.ts]
 export { default as Tool } from './Tool.vue'
 export { default as ToolContent } from './ToolContent.vue'
 export { default as ToolHeader } from './ToolHeader.vue'
@@ -306,7 +306,7 @@ Build a simple stateful weather app that renders the last message in a tool usin
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue] height=260 collapse
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import type { ToolUIPart } from 'ai'
 import { useChat } from '@ai-sdk/vue'
@@ -422,7 +422,7 @@ const weatherOutputVNode = computed(() => {
 
 Add the following route to your backend:
 
-```ts [server/api/agent.ts] height=260 collapse
+```ts [server/api/agent.ts] height=500 collapse
 import { convertToModelMessages, streamText, UIMessage } from 'ai'
 import { defineEventHandler, readBody } from 'h3'
 import { z } from 'zod'

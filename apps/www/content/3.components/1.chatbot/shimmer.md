@@ -1,6 +1,6 @@
 ---
 title: Shimmer
-description:
+description: An animated text shimmer component for creating eye-catching loading states and progressive reveal effects.
 icon: lucide:sparkles
 ---
 
@@ -12,12 +12,12 @@ The `Shimmer` component provides an animated shimmer effect that sweeps across t
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add shimmer
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/shimmer.json
@@ -30,7 +30,7 @@ The `Shimmer` component provides an animated shimmer effect that sweeps across t
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Shimmer.vue]
+```vue [Shimmer.vue] height=500 collapse
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -107,30 +107,18 @@ const MotionComponent = computed(() => {
   ```
 :::
 
-## Usage
-
-```ts
-import { Shimmer } from '@/components/ai-elements/shimmer'
-```
-
-```vue
-<Shimmer>
-  Loading your response...
-</Shimmer>
-```
-
 ## Features
 
 - Smooth animated shimmer effect using CSS gradients and Motion
 - Customizable animation duration and spread
-- Polymorphic component - render as any HTML element via the as propAutomatic spread calculation based on text length
+- Polymorphic component - render as any HTML element via the `as` propAutomatic spread calculation based on text length
 - Automatic spread calculation based on text length
 - Theme-aware styling using CSS custom properties
 - Infinite looping animation with linear easing
 - TypeScript support with proper type definitions
 - Memoized for optimal performance
 - Responsive and accessible design
-- Uses text-transparent with background-clip for crisp text rendering
+- Uses `text-transparent` with background-clip for crisp text rendering
 
 ## Examples
 

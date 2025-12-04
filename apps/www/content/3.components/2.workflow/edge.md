@@ -13,12 +13,12 @@ The `Edge` component provides two pre-styled edge types for Vue Flow canvases: `
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add edge
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/edge.json
@@ -62,7 +62,7 @@ Copy and paste the following code in the same folder.
   </template>
   ```
 
-  ```vue [Animated.vue] height=260 collapse
+  ```vue [Animated.vue] height=500 collapse
   <script setup lang="ts">
   import type { EdgeProps, GraphNode, HandleElement } from '@vue-flow/core'
   import { BaseEdge, getBezierPath, Position } from '@vue-flow/core'

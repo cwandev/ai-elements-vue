@@ -12,12 +12,12 @@ The `Context` component provides a comprehensive view of AI model usage through 
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add context
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/context.json
@@ -30,7 +30,7 @@ The `Context` component provides a comprehensive view of AI model usage through 
 Copy and paste the following files into the same folder.
 
 :::code-group
-```vue [Context.vue] height=260 collapse
+```vue [Context.vue] height=500 collapse
 <script setup lang="ts">
 import type { LanguageModelUsage } from 'ai'
 import type { ModelId } from './context'
@@ -62,7 +62,7 @@ provide(ContextKey, {
 </template>
 ```
 
-```vue [ContextIcon.vue] height=260 collapse
+```vue [ContextIcon.vue] height=500 collapse
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useContextValue } from './context'
@@ -127,7 +127,7 @@ const svgStyle = {
 </template>
 ```
 
-```vue [ContextTrigger.vue] height=260 collapse
+```vue [ContextTrigger.vue] height=500 collapse
 <script setup lang="ts">
 import { Button } from '@repo/shadcn-vue/components/ui/button'
 import { HoverCardTrigger } from '@repo/shadcn-vue/components/ui/hover-card'
@@ -163,7 +163,7 @@ const renderedPercent = computed(() => {
 </template>
 ```
 
-```vue [ContextContent.vue] height=260 collapse
+```vue [ContextContent.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { HoverCardContent } from '@repo/shadcn-vue/components/ui/hover-card'
@@ -186,7 +186,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ContextContentHeader.vue] height=260 collapse
+```vue [ContextContentHeader.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Progress } from '@repo/shadcn-vue/components/ui/progress'
@@ -239,7 +239,7 @@ const total = computed(() => formatter.format(maxTokens.value))
 </template>
 ```
 
-```vue [ContextContentBody.vue] height=260 collapse
+```vue [ContextContentBody.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -256,7 +256,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [ContextContentFooter.vue] height=260 collapse
+```vue [ContextContentFooter.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -309,7 +309,7 @@ const totalCost = computed(() => {
 </template>
 ```
 
-```vue [ContextInputUsage.vue] height=260 collapse
+```vue [ContextInputUsage.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -359,7 +359,7 @@ const inputCostText = computed(() => {
 </template>
 ```
 
-```vue [ContextOutputUsage.vue] height=260 collapse
+```vue [ContextOutputUsage.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -408,7 +408,7 @@ const outputCostText = computed(() => {
 </template>
 ```
 
-```vue [ContextReasoningUsage.vue] height=260 collapse
+```vue [ContextReasoningUsage.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -460,7 +460,7 @@ const reasoningCostText = computed(() => {
 </template>
 ```
 
-```vue [ContextCacheUsage.vue] height=260 collapse
+```vue [ContextCacheUsage.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -509,7 +509,7 @@ const cacheCostText = computed(() => {
 </template>
 ```
 
-```vue [TokensWithCost.vue] height=260 collapse
+```vue [TokensWithCost.vue]
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -537,7 +537,7 @@ const formattedTokens = computed(() => {
 </template>
 ```
 
-```ts [context.ts]  height=260 collapse
+```ts [context.ts]
 import type { LanguageModelUsage } from 'ai'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { inject } from 'vue'
@@ -627,7 +627,7 @@ The component uses Tailwind CSS classes and follows your design system:
 - **Compound Component Architecture:** Flexible composition of context display elements
 - **Visual Progress Indicator:** Circular SVG progress ring showing context usage percentage
 - **Token Breakdown:** Detailed view of input, output, reasoning, and cached tokens
-- **Cost Estimation:** Real-time cost calculation using the tokenlens library
+- **Cost Estimation:** Real-time cost calculation using the `tokenlens` library
 - **Intelligent Formatting:** Automatic token count formatting (K, M, B suffixes)
 - **Interactive Hover Card:** Detailed information revealed on hover
 - **Context Provider Pattern:** Clean data flow through Vue’s `provide/inject` API

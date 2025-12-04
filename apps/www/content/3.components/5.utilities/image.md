@@ -1,6 +1,6 @@
 ---
 title: Image
-description:
+description: Displays AI-generated images from the AI SDK.
 icon: lucide:image
 ---
 
@@ -12,12 +12,12 @@ The `Image` component displays AI-generated images from the AI SDK. It accepts a
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add image
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/image.json
@@ -67,27 +67,118 @@ Copy and paste the following files into the same folder.
   ```
 :::
 
-## Usage
+## Usage with AI SDK
 
-```vue
+Build a simple code generation tool using the [`experimental_useObject`](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-object) hook.
+
+Add the following component to your frontend:
+
+::::code-group
+```vue [app/page.vue] height=500 collapse
 <script setup lang="ts">
-import { Image } from '@/components/ai-elements/image'
+import { ref } from 'vue'
 
-const exampleImage = {
-  base64: 'valid-base64-string',
-  mediaType: 'image/jpeg',
-  uint8Array: new Uint8Array([]),
+import { Image } from '@/components/ai-elements/image'
+import { Loader } from '@/components/ai-elements/loader'
+import { PromptInput, PromptInputSubmit, PromptInputTextarea } from '@/components/ai-elements/prompt-input'
+
+const prompt = ref('A futuristic cityscape at sunset')
+const imageData = ref<any>(null)
+const isLoading = ref(false)
+
+async function handleSubmit() {
+  if (!prompt.value.trim())
+    return
+
+  const currentPrompt = prompt.value.trim()
+  prompt.value = ''
+
+  setIsLoading(true)
+
+  try {
+    const response = await fetch('/api/image', {
+      method: 'POST',
+      body: JSON.stringify({ prompt: currentPrompt }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = await response.json()
+    imageData.value = data
+  }
+  catch (error) {
+    console.error('Error generating image:', error)
+  }
+  finally {
+    setIsLoading(false)
+  }
+}
+
+function setIsLoading(value: boolean) {
+  isLoading.value = value
 }
 </script>
 
 <template>
-  <Image
-    v-bind="exampleImage"
-    alt="Example generated image"
-    class="h-[150px] aspect-square border"
-  />
+  <div class="max-w-4xl mx-auto p-6 relative size-full rounded-lg border h-[600px]">
+    <div class="flex flex-col h-full">
+      <div class="flex-1 overflow-y-auto p-4">
+        <div v-if="imageData" class="flex justify-center">
+          <Image
+            v-bind="imageData"
+            alt="Generated image"
+            class="h-[300px] aspect-square border rounded-lg"
+          />
+        </div>
+
+        <Loader v-if="isLoading" />
+      </div>
+
+      <PromptInput
+        class="mt-4 w-full max-w-2xl mx-auto relative"
+        @submit="handleSubmit"
+      >
+        <PromptInputTextarea
+          v-model="prompt"
+          placeholder="Describe the image you want to generate..."
+          class="pr-12"
+        />
+        <PromptInputSubmit
+          :status="isLoading ? 'submitted' : 'ready'"
+          :disabled="!prompt.trim()"
+          class="absolute bottom-1 right-1"
+        />
+      </PromptInput>
+    </div>
+  </div>
 </template>
 ```
+::::
+
+Add the following route to your backend:
+
+::::code-group
+```ts [server/api/image.ts]
+import { openai } from '@ai-sdk/openai'
+import { experimental_generateImage } from 'ai'
+
+export default defineEventHandler(async (event) => {
+  const { prompt } = await readBody<{ prompt: string }>(event)
+
+  const { image } = await experimental_generateImage({
+    model: openai.image('dall-e-3'),
+    prompt,
+    size: '1024x1024',
+  })
+
+  return {
+    base64: image.base64,
+    uint8Array: image.uint8Array,
+    mediaType: image.mediaType,
+  }
+})
+```
+::::
 
 ## Features
 

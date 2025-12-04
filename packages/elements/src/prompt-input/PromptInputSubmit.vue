@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// import type { InputGroupButtonVariants } from '@repo/shadcn-vue/components/ui/input-group'
 import type { ChatStatus } from 'ai'
 import type { HTMLAttributes } from 'vue'
 import { InputGroupButton } from '@repo/shadcn-vue/components/ui/input-group'
@@ -11,6 +12,8 @@ type InputGroupButtonProps = InstanceType<typeof InputGroupButton>['$props']
 interface Props extends /* @vue-ignore */ InputGroupButtonProps {
   class?: HTMLAttributes['class']
   status?: ChatStatus
+  variant?: InputGroupButtonProps['variant']
+  size?: InputGroupButtonProps['size']
 }
 
 const props = withDefaults(defineProps<Props>(), {

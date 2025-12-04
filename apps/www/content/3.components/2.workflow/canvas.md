@@ -14,12 +14,12 @@ It comes pre-configured with sensible defaults for AI applications, including pa
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add canvas
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/canvas.json
@@ -32,7 +32,7 @@ It comes pre-configured with sensible defaults for AI applications, including pa
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Canvas.vue] height=260 collapse
+  ```vue [Canvas.vue] height=500 collapse
   <script setup lang="ts">
   import type { FlowEmits, FlowProps, FlowSlots } from '@vue-flow/core'
   import { Background } from '@vue-flow/background'

@@ -12,12 +12,12 @@ The `Reasoning` component is a collapsible component that displays AI reasoning 
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add reasoning
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/reasoning.json
@@ -30,7 +30,7 @@ The `Reasoning` component is a collapsible component that displays AI reasoning 
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Reasoning.vue] height=300 collapse
+```vue [Reasoning.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Collapsible } from '@repo/shadcn-vue/components/ui/collapsible'
@@ -124,7 +124,7 @@ provide(ReasoningKey, {
 </template>
 ```
 
-```vue [ReasoningTrigger.vue] height=300 collapse
+```vue [ReasoningTrigger.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { CollapsibleTrigger } from '@repo/shadcn-vue/components/ui/collapsible'
@@ -188,7 +188,7 @@ const thinkingMessage = computed(() => {
 </template>
 ```
 
-```vue [ReasoningContent.vue] height=300 collapse
+```vue [ReasoningContent.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { CollapsibleContent } from '@repo/shadcn-vue/components/ui/collapsible'
@@ -232,7 +232,7 @@ const md = computed(() => (slotContent.value ?? props.content ?? '') as string)
 </template>
 ```
 
-```ts [context.ts] height=300 collapse
+```ts [context.ts]
 import type { InjectionKey, Ref } from 'vue'
 import { inject, provide } from 'vue'
 
@@ -254,7 +254,7 @@ export function useReasoningContext() {
 }
 ```
 
-```ts [index.ts] height=300 collapse
+```ts [index.ts]
 export { default as Reasoning } from './Reasoning.vue'
 export { default as ReasoningContent } from './ReasoningContent.vue'
 export { default as ReasoningTrigger } from './ReasoningTrigger.vue'
@@ -267,7 +267,7 @@ Build a chatbot with reasoning using Deepseek R1.
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue] height=300 collapse
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import { useChat } from '@ai-sdk/vue'
 import { ref } from 'vue'
@@ -371,7 +371,7 @@ function isStreamingPart(msgIndex: number, partIndex: number) {
 
 Add the following route to your backend:
 
-```ts [server/api/chat/route.ts] height=300 collapse
+```ts [server/api/chat.ts]
 import { convertToModelMessages, streamText, UIMessage } from 'ai'
 
 export const maxDuration = 30
@@ -395,13 +395,13 @@ export default defineEventHandler(async (event) => {
 
 - Automatically opens when streaming content and closes when finished
 - Manual toggle control for user interaction
-- Smooth animations and transitions powered by Radix UI
+- Smooth animations and transitions powered by Reka UI
 - Visual streaming indicator with pulsing animation
 - Composable architecture with separate trigger and content components
 - Built with accessibility in mind including keyboard navigation
 - Responsive design that works across different screen sizes
 - Seamlessly integrates with both light and dark themes
-- Built on top of shadcn/ui Collapsible primitives
+- Built on top of shadcn-vue Collapsible primitives
 - TypeScript support with proper type definitions
 
 ## Props

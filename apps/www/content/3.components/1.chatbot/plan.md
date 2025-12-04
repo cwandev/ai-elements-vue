@@ -1,6 +1,6 @@
 ---
 title: Plan
-description:
+description: A collapsible plan component for displaying AI-generated execution plans with streaming support and shimmer animations.
 icon: lucide:map
 ---
 
@@ -12,12 +12,12 @@ The `Plan` component provides a flexible system for displaying AI-generated exec
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add plan
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/plan.json
@@ -30,7 +30,7 @@ The `Plan` component provides a flexible system for displaying AI-generated exec
 Copy and paste the following code in the same folder.
 
 :::code-group
-```vue [Plan.vue]
+```vue [Plan.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Card } from '@repo/shadcn-vue/components/ui/card'
@@ -233,46 +233,6 @@ export { default as PlanTitle } from './PlanTitle.vue'
 export { default as PlanTrigger } from './PlanTrigger.vue'
 ```
 :::
-
-## Usage
-
-```ts
-import {
-  Plan,
-  PlanAction,
-  PlanContent,
-  PlanDescription,
-  PlanFooter,
-  PlanHeader,
-  PlanTitle,
-  PlanTrigger,
-} from '@/components/ai-elements/plan'
-```
-
-```vue
-<Plan :default-open="false">
-  <PlanHeader>
-    <div>
-      <PlanTitle>Implement new feature</PlanTitle>
-      <PlanDescription>
-        Add authentication system with JWT tokens and refresh logic.
-      </PlanDescription>
-    </div>
-    <PlanTrigger />
-  </PlanHeader>
-  <PlanContent>
-    <div className="space-y-4 text-sm">
-      <div>
-        <h3 className="mb-2 font-semibold">Overview</h3>
-        <p>This plan outlines the implementation strategy...</p>
-      </div>
-    </div>
-  </PlanContent>
-  <PlanFooter>
-    <Button>Execute Plan</Button>
-  </PlanFooter>
-</Plan>
-```
 
 ## Features
 

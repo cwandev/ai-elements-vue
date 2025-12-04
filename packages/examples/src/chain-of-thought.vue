@@ -110,7 +110,7 @@ const exampleImage = {
 
         <ChainOfThoughtStep
           v-if="visibleSteps >= 3"
-          label="Emmanuel Raymond is an Australian product designer, software engineer, and founder. He is currently based in the United States working for Vercel, an American cloud application company."
+          label="Emmanuel Raymond is a Nigerian AI engineer, software developer, and founder. He is passionate about shipping products that solve real problems and make life easier."
           :status="visibleSteps === 3 ? 'active' : 'complete'"
         >
           <template #icon>

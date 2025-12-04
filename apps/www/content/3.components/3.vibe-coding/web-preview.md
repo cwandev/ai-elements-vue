@@ -12,12 +12,12 @@ The `WebPreview` component provides a flexible way to showcase the result of a g
 ## Install using CLI
 
 :::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add web-preview
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/web-preview.json
@@ -27,7 +27,7 @@ The `WebPreview` component provides a flexible way to showcase the result of a g
 
 ## Install Manually
 :::code-group
-```vue [WebPreview.vue] height=300 collapse
+```vue [WebPreview.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -90,7 +90,7 @@ const vBind = computed(() => {
 </template>
 ```
 
-```vue [WebPreviewBody.vue] height=300 collapse
+```vue [WebPreviewBody.vue] height=500 collapse
 <script setup lang="ts">
 import type { IframeHTMLAttributes, VNodeChild } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -128,7 +128,7 @@ const frameSrc = computed(() => (props.src ?? url.value) || undefined)
 </template>
 ```
 
-```vue [WebPreviewConsole.vue] height=300 collapse
+```vue [WebPreviewConsole.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Button } from '@repo/shadcn-vue/components/ui/button'
@@ -223,7 +223,7 @@ function levelClass(level: LogLevel) {
 </template>
 ```
 
-```vue [WebPreviewNavigation.vue] height=300 collapse
+```vue [WebPreviewNavigation.vue]
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@repo/shadcn-vue/lib/utils'
@@ -247,7 +247,7 @@ const props = defineProps<Props>()
 </template>
 ```
 
-```vue [WebPreviewNavigationButton.vue] height=300 collapse
+```vue [WebPreviewNavigationButton.vue] height=500 collapse
 <script setup lang="ts">
 import type { ButtonVariants } from '@repo/shadcn-vue/components/ui/button'
 import type { HTMLAttributes } from 'vue'
@@ -295,7 +295,7 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 ```
 
-```vue [WebPreviewUrl.vue] height=300 collapse
+```vue [WebPreviewUrl.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Input } from '@repo/shadcn-vue/components/ui/input'
@@ -342,7 +342,7 @@ function handleKeydown() {
 </template>
 ```
 
-```ts [context.ts] height=300 collapse
+```ts [context.ts]
 import type { InjectionKey, Ref } from 'vue'
 import { inject, provide } from 'vue'
 
@@ -387,12 +387,10 @@ Build a simple v0 clone using the [v0 Platform API](https://v0.dev/docs/api/plat
 
 Install the `v0-sdk` package:
 
-```package-install
-npm i v0-sdk
-```
+:pm-install{name="v0-sdk"}
 
 Add the following component to your frontend:
-```vue [app.vue] height=300 collapse
+```vue [app.vue] height=500 collapse
 <script setup lang="ts">
 import { Loader } from '@/components/ai-elements/loader'
 import {
@@ -483,7 +481,7 @@ async function handleSubmit(e: Event) {
 
 Add the following route to your backend:
 
-```ts [server/api/v0.post.ts] height=300 collapse
+```ts [server/api/v0.post.ts]
 import type { ChatsCreateResponse } from 'v0-sdk'
 import { defineEventHandler, readBody } from 'h3'
 import { v0 } from 'v0-sdk'

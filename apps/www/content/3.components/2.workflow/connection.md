@@ -14,12 +14,12 @@ It renders an animated bezier curve with a circle indicator at the target end, u
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add connection
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/connection.json
@@ -32,7 +32,7 @@ It renders an animated bezier curve with a circle indicator at the target end, u
 Copy and paste the following code in the same folder.
 
 ::code-group
-  ```vue [Connection.vue] height=260 collapse
+  ```vue [Connection.vue] height=500 collapse
   <script setup lang="ts">
   import type { ConnectionLineProps } from '@vue-flow/core'
   import { computed } from 'vue'

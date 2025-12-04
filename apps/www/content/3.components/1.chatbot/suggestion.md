@@ -1,6 +1,6 @@
 ---
 title: Suggestion
-description:
+description: A suggestion component that displays a horizontal row of clickable suggestions for user interaction.
 icon: lucide:lightbulb
 ---
 
@@ -12,12 +12,12 @@ The `Suggestion` component displays a horizontal row of clickable suggestions fo
 ## Install using CLI
 
 ::tabs{variant="card"}
-  ::div{label="ai-elements-vue"}
+  ::div{label="AI Elements Vue"}
   ```sh
   npx ai-elements-vue@latest add suggestion
   ```
   ::
-  ::div{label="shadcn-vue"}
+  ::div{label="shadcn-vue CLI"}
 
   ```sh
   npx shadcn-vue@latest add https://registry.ai-elements-vue.com/suggestion.json
@@ -53,7 +53,7 @@ const props = defineProps<SuggestionsProps>()
 </template>
 ```
 
-```vue [Suggestions.vue]
+```vue [Suggestions.vue] height=500 collapse
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Button } from '@repo/shadcn-vue/components/ui/button'
@@ -100,25 +100,13 @@ export { default as Suggestions } from './Suggestions.vue'
 ```
 :::
 
-## Usage
-
-```ts
-import { Suggestion, Suggestions } from '@/components/ai-elements/suggestion'
-```
-
-```vue
-<Suggestions>
-  <Suggestion suggestion="What are the latest trends in AI?" />
-</Suggestions>
-```
-
 ## Usage with AI SDK
 
 Build a simple input with suggestions users can click to send a message to the LLM.
 
 Add the following component to your frontend:
 
-```vue [pages/index.vue]
+```vue [pages/index.vue] height=500 collapse
 <script setup lang="ts">
 import { useChat } from '@ai-sdk/vue'
 import { ref } from 'vue'
