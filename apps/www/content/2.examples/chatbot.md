@@ -18,13 +18,13 @@ Let's walk through how to build a chatbot using AI Elements Vue and AI SDK. Our 
 
   First, set up a new Nuxt.js repo by running the following command:
 
-  ```sh
+  ```sh [Terminal]
   pnpm create nuxt@latest ai-chatbot
   ```
 
   Navigate to the newly created directory:
 
-  ```sh
+  ```sh [Terminal]
   cd ai-chatbot
   ```
 
@@ -80,13 +80,13 @@ Let's walk through how to build a chatbot using AI Elements Vue and AI SDK. Our 
   Create a `.env` file in your project root and add your [Vercel AI Gateway](https://vercel.com/ai-gateway) API Key.
   This key is used to authenticate your application with the Vercel AI Gateway service.
 
-  ```sh
+  ```sh [Terminal]
   touch .env
   ```
 
   Edit the `.env` file:
 
-  ```env [.env]
+  ```text [.env]
   NUXT_AI_GATEWAY_API_KEY=xxxxxxxxx
   ```
 
@@ -474,7 +474,7 @@ Let's walk through how to build a chatbot using AI Elements Vue and AI SDK. Our 
 
   With that, you have built everything you need for your chatbot! To start your application, use the command:
 
-  ```sh
+  ```sh [Terminal]
   pnpm run dev
   ```
   Head to your browser and open http://localhost:3000.

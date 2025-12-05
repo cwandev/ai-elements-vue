@@ -30,31 +30,33 @@ const defaultTab = tabs[0].name
 </script>
 
 <template>
-  <Toaster />
+  <ClientOnly>
+    <Toaster />
 
-  <div class="my-4 w-full rounded-lg border">
-    <Tabs :default-value="defaultTab">
-      <TabsList class="w-full justify-start rounded-none border-b bg-muted/50 p-0">
-        <TabsTrigger
+    <div class="my-4 w-full rounded-lg border">
+      <Tabs :default-value="defaultTab">
+        <TabsList class="w-full justify-start rounded-none border-b bg-muted/50 p-0">
+          <TabsTrigger
+            v-for="tab in tabs"
+            :key="tab.name"
+            :value="tab.name"
+            class="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-background"
+          >
+            {{ tab.name }}
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent
           v-for="tab in tabs"
           :key="tab.name"
           :value="tab.name"
-          class="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-background"
+          class="m-0 p-0"
         >
-          {{ tab.name }}
-        </TabsTrigger>
-      </TabsList>
-
-      <TabsContent
-        v-for="tab in tabs"
-        :key="tab.name"
-        :value="tab.name"
-        class="m-0 p-0"
-      >
-        <div class="">
-          <ComponentViewer :component-name="tab.componentName" />
-        </div>
-      </TabsContent>
-    </Tabs>
-  </div>
+          <div class="">
+            <ComponentViewer :component-name="tab.componentName" />
+          </div>
+        </TabsContent>
+      </Tabs>
+    </div>
+  </ClientOnly>
 </template>
