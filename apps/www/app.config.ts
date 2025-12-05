@@ -31,7 +31,7 @@ export default defineAppConfig({
           target: '_self',
         }, {
           title: 'Examples',
-          to: '/examples',
+          to: '/examples/chatbot',
           description: 'Real-world examples showing how to build applications with AI Elements Vue',
           target: '_self',
         }, {

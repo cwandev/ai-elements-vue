@@ -4,15 +4,17 @@
   "version": "0.14.2",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt generate",
     "dev": "nuxt dev --port 3002",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "wrangler pages dev",
+    "deploy": "wrangler pages deploy --project-name ai-elements-vue",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@repo/elements": "workspace:*",
     "@repo/examples": "workspace:*",
+    "@vueuse/shared": "^14.1.0",
     "highlight.js": "^11.11.1",
     "nuxt": "3.18.0",
     "shadcn-docs-nuxt": "^1.1.4",
@@ -24,6 +26,8 @@
     "@iconify-json/logos": "^1.2.9",
     "@iconify-json/lucide": "^1.2.73",
     "@iconify-json/simple-icons": "^1.2.54",
-    "tailwindcss-animate": "^1.0.7"
+    "baseline-browser-mapping": "^2.9.2",
+    "tailwindcss-animate": "^1.0.7",
+    "wrangler": "^4.52.1"
   }
 }

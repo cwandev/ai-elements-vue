@@ -5,9 +5,17 @@ export default defineNuxtConfig({
 
   plugins: ['~/plugins/ai-elements'],
 
+  experimental: {
+    payloadExtraction: false,
+  },
+
   mdc: {
     highlight: {
       shikiEngine: 'javascript',
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+      },
     },
   },
 
@@ -39,9 +47,13 @@ export default defineNuxtConfig({
     transpile: ['@repo/examples'],
   },
 
-  compatibilityDate: '2024-07-06',
+  compatibilityDate: '2024-09-19',
 
   sourcemap: false,
+
+  routeRules: {
+    '/**': { prerender: true },
+  },
 
   vite: {
     build: {
@@ -64,12 +76,24 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-module',
-  },
-
-  alias: {
-    // Replace Playwright with a mock to bypass Cloudflare build restrictions.
-    'playwright-core': 'unenv/mock/proxy',
-    'playwright': 'unenv/mock/proxy',
+    preset: 'cloudflare_pages',
+    cloudflare: {
+      deployConfig: false,
+      nodeCompat: true,
+      pages: {
+        routes: {
+          include: ['/*'],
+          exclude: ['/api/_mdc/*'],
+        },
+      },
+    },
+    prerender: {
+      crawlLinks: true,
+      autoSubfolderIndex: false,
+      failOnError: true,
+    },
+    storage: {
+      cache: { driver: 'memory' },
+    },
   },
 })

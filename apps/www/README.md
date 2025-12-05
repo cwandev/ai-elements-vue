@@ -21,14 +21,22 @@ pnpm dev
 
 ## Production
 
-Build the application for production:
+Build a fully static version of the docs (outputs to `.output/public`):
 
 ```bash
 pnpm build
 ```
 
-Locally preview production build:
+Preview the generated site with Cloudflare Pages tooling:
 
 ```bash
+# run after pnpm build
 pnpm preview
+```
+
+Deploy to Cloudflare Pages (requires `wrangler login` once):
+
+```bash
+# from apps/www
+pnpm run deploy
 ```

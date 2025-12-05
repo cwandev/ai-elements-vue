@@ -184,7 +184,7 @@ export { default as ConversationScrollButton } from './ConversationScrollButton.
 
 ## Usage with AI SDK
 
-Build a simple conversational UI with `Conversation` and [`PromptInput`](/components/prompt-input):
+Build a simple conversational UI with `Conversation` and [`PromptInput`](/components/chatbot/prompt-input):
 
 Add the following component to your frontend:
 
