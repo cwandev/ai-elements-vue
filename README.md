@@ -1,12 +1,24 @@
-# AI Elements Vue
+<div align="center">
+  <img src="./media/cover.png" >
+</div>
 
-[AI Elements Vue](https://ai-elements-vue.com) is an unofficial community-led [Vue](https://vuejs.org) port of [AI Elements](https://github.com/vercel/ai-elements).
+<br />
 
-> **Note** <br> **We are not affiliated with AI Elements, but the project has the author’s encouragement and support.** <br> This is a project born out of the need for a similar project for the Vue ecosystem.
+<div align="center">
+  <a href="https://www.npmjs.com/package/ai-elements-vue" target="\_parent">
+    <img alt="" src="https://img.shields.io/npm/dm/ai-elements-vue.svg" />
+  </a>
+  <a href="#badge">
+    <img src="https://img.shields.io/github/v/release/vuepont/ai-elements-vue" alt="Release"/>
+  </a>
+  <a href="https://github.com/vuepont/ai-elements-vue" target="\_parent">
+    <img alt="" src="https://img.shields.io/github/stars/vuepont/ai-elements-vue.svg?style=social&label=Star" alt="GitHub stars" />
+  </a>
+</div>
 
 ## Overview
 
-[AI Elements Vue](https://ai-elements-vue.com) is a component library built on top of [shadcn-vue](https://www.shadcn-vue.com/) to help you build AI-native applications faster. It provides pre-built, customizable Vue components specifically designed for AI applications, including conversations, messages, code blocks, reasoning displays, and more. The CLI makes it easy to add these components to your Vue.js or Nuxt.js project.
+[AI Elements Vue](https://ai-elements-vue.com) provides pre-built, customizable Vue components specifically designed for AI applications, including conversations, messages, code blocks, reasoning displays, and more. The CLI makes it easy to add these components to your Vue.js and Nuxt.js project.
 
 ## Installation
 
@@ -53,6 +65,7 @@ npx ai-elements-vue@latest add <component-name>
 ```
 
 Examples:
+
 ```bash
 # Install the message component
 npx ai-elements-vue@latest add message
@@ -80,23 +93,43 @@ npx shadcn-vue@latest add https://registry.ai-elements-vue.com/message.json
 
 AI Elements Vue includes the following components:
 
-| Component | Status | Description |
-|-----------|--------|-------------|
-| `message` | ✅ | Individual chat messages with avatars |
-| `conversation` | ✅ | Container for chat conversations |
-| `response` | ✅ | Formatted AI response display |
-| `prompt-input` | ✅ | Advanced input component with model selection |
-| `actions` | ✅ | Interactive action buttons for AI responses |
-| `branch` | ✅ | Branch visualization for conversation flows |
-| `code-block` | ✅ | Syntax-highlighted code display with copy functionality |
-| `image` | ✅ | AI-generated image display component |
-| `inline-citation` | ❌ | Inline source citations |
-| `loader` | ✅ | Loading states for AI operations |
-| `reasoning` | ❌ | Display AI reasoning and thought processes |
-| `source` | ❌ | Source attribution component |
-| `suggestion` | ✅ | Quick action suggestions |
-| `task` | ❌ | Task completion tracking |
-| `tool` | ❌ | Tool usage visualization |
+| Component          | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| **Chatbot**        |                                                         |
+| `chain-of-thought` | Display AI reasoning and thought processes              |
+| `checkpoint`       | Conversation checkpoint component                       |
+| `confirmation`     | Tool execution approval workflows                       |
+| `context`          | Display Context consumption                             |
+| `conversation`     | Container for chat conversations                        |
+| `inline-citation`  | Inline source citations                                 |
+| `message`          | Individual chat messages with avatars                   |
+| `model-selector`   | AI model selection component                            |
+| `plan`             | Plan and task planning display component                |
+| `prompt-input`     | Advanced input component with model selection           |
+| `queue`            | Message and todo queue with attachments                 |
+| `reasoning`        | Display AI reasoning and thought processes              |
+| `shimmer`          | Text shimmer animation effect                           |
+| `sources`          | Source attribution component                            |
+| `suggestion`       | Quick action suggestions                                |
+| `task`             | Task completion tracking                                |
+| `tool`             | Tool usage visualization                                |
+| **Workflow**       |                                                         |
+| `canvas`           | ReactFlow canvas for workflow visualizations            |
+| `connection`       | Connection line component for workflow edges            |
+| `controls`         | Flow controls for canvas (zoom, fit view, etc.)         |
+| `edge`             | Edge component for connections between workflow nodes   |
+| `node`             | Node component for workflow graphs                      |
+| `panel`            | Panel component for canvas overlays                     |
+| `toolbar`          | Node toolbar for workflow elements                      |
+| **Vibe-Coding**    |                                                         |
+| `artifact`         | Display a code or document                              |
+| `web-preview`      | Embedded web page previews                              |
+| **Documentation**  |                                                         |
+| `open-in-chat`     | Open in chat button for a message                       |
+| **Utilities**      |                                                         |
+| `code-block`       | Syntax-highlighted code display with copy functionality |
+| `image`            | AI-generated image display component                    |
+| `loader`           | Loading states for AI operations                        |
 
 ## How It Works
 
@@ -130,6 +163,13 @@ If you'd like to contribute to AI Elements Vue, please follow these steps:
 3. Make your changes to the components in `packages/elements`.
 4. Open a PR to the `main` branch.
 
+## 🙏 Acknowledgments
+
+This project draws inspiration from several excellent projects:
+
+- **[shadcn-vue](https://www.shadcn-svelte.com/)** - UI component foundation
+- **[Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)** - AI component concepts
+
 ---
 
-Made with ❤️ by [cwandev](https://github.com/cwandev)
+Made with ❤️ by [vuepont](https://github.com/vuepont)
