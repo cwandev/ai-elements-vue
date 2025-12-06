@@ -106,6 +106,7 @@ onlyBuiltDependencies:
   - sharp
   - simple-git-hooks
   - vue-demi
+  - workerd
 
 peerDependencyRules:
   allowedVersions:
