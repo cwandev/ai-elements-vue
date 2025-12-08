@@ -114,7 +114,7 @@ AI Elements Vue includes the following components:
 | `task`             | Task completion tracking                                |
 | `tool`             | Tool usage visualization                                |
 | **Workflow**       |                                                         |
-| `canvas`           | ReactFlow canvas for workflow visualizations            |
+| `canvas`           | VueFlow canvas for workflow visualizations            |
 | `connection`       | Connection line component for workflow edges            |
 | `controls`         | Flow controls for canvas (zoom, fit view, etc.)         |
 | `edge`             | Edge component for connections between workflow nodes   |
@@ -163,12 +163,12 @@ If you'd like to contribute to AI Elements Vue, please follow these steps:
 3. Make your changes to the components in `packages/elements`.
 4. Open a PR to the `main` branch.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 This project draws inspiration from several excellent projects:
 
-- **[shadcn-vue](https://www.shadcn-svelte.com/)** - UI component foundation
-- **[Vercel AI Elements](https://vercel.com/changelog/introducing-ai-elements)** - AI component concepts
+- **[ai-elements](https://ai-sdk.dev/elements)** - AI component concepts
+- **[shadcn-vue](https://www.shadcn-vue.com)** - UI component foundation
 
 ---
 
