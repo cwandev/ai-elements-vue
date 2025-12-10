@@ -53,7 +53,7 @@ watch(() => props.isStreaming, (streaming) => {
     // Auto-open when streaming starts
     isOpen.value = true
 
-    if (startTime.value === null) {
+    if (startTime.value === null && props.duration === undefined) {
       startTime.value = Date.now()
     }
   }
@@ -62,7 +62,7 @@ watch(() => props.isStreaming, (streaming) => {
     updateDuration(calculatedDuration)
     startTime.value = null
   }
-})
+}, { immediate: true })
 
 // Auto-close logic
 watch([() => props.isStreaming, isOpen, () => props.defaultOpen, hasAutoClosed], (_, __, onCleanup) => {

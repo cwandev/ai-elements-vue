@@ -72,7 +72,6 @@ import { nanoid } from 'nanoid'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
 
-// ------------------ Types ------------------
 interface MessageType {
   key: string
   from: 'user' | 'assistant'
@@ -98,7 +97,6 @@ interface MessageType {
   isReasoningStreaming?: boolean
 }
 
-// ------------------ Mock data ------------------
 const models = [
   {
     id: 'grok-3',
@@ -123,7 +121,7 @@ const mockMessages: MessageType[] = [
     versions: [
       {
         id: nanoid(),
-        content: 'Can you explain how to use React hooks effectively?',
+        content: 'Can you explain how to use Vue reactivity effectively?',
       },
     ],
   },
@@ -132,40 +130,40 @@ const mockMessages: MessageType[] = [
     from: 'assistant',
     sources: [
       {
-        href: 'https://react.dev/reference/react',
-        title: 'React Documentation',
+        href: 'https://vuejs.org/api/reactivity-core.html',
+        title: 'Vue Reactivity Core',
       },
       {
-        href: 'https://react.dev/reference/react-dom',
-        title: 'React DOM Documentation',
+        href: 'https://vuejs.org/guide/extras/composition-api-faq.html',
+        title: 'Composition API FAQ',
       },
     ],
     tools: [
       {
         name: 'mcp',
-        description: 'Searching React documentation',
-        status: 'input-available' as ToolUIPart['state'],
+        description: 'Searching Vue documentation',
+        status: 'input-available',
         parameters: {
-          query: 'React hooks best practices',
-          source: 'react.dev',
+          query: 'Vue reactivity best practices',
+          source: 'vuejs.org',
         },
         result: `{
-  "query": "React hooks best practices",
+  "query": "Vue reactivity best practices",
   "results": [
     {
-      "title": "Rules of Hooks",
-      "url": "https://react.dev/warnings/invalid-hook-call-warning",
-      "snippet": "Hooks must be called at the top level of your React function components or custom hooks. Don't call hooks inside loops, conditions, or nested functions."
+      "title": "Reactivity Fundamentals",
+      "url": "https://vuejs.org/guide/essentials/reactivity-fundamentals.html",
+      "snippet": "Vue's reactivity system automatically tracks dependencies and triggers updates when reactive values change."
     },
     {
-      "title": "useState Hook",
-      "url": "https://react.dev/reference/react/useState",
-      "snippet": "useState is a React Hook that lets you add state to your function components. It returns an array with two values: the current state and a function to update it."
+      "title": "Computed Properties",
+      "url": "https://vuejs.org/guide/essentials/computed.html",
+      "snippet": "Computed properties are cached based on their dependencies and only re-evaluate when necessary."
     },
     {
-      "title": "useEffect Hook",
-      "url": "https://react.dev/reference/react/useEffect",
-      "snippet": "useEffect lets you synchronize a component with external systems. It runs after render and can be used to perform side effects like data fetching."
+      "title": "Watchers",
+      "url": "https://vuejs.org/guide/essentials/watchers.html",
+      "snippet": "Watch is used to perform side effects in response to reactive state changes."
     }
   ]
 }`,
@@ -175,42 +173,40 @@ const mockMessages: MessageType[] = [
     versions: [
       {
         id: nanoid(),
-        content: `# React Hooks Best Practices
+        content: `# Vue Reactivity Best Practices
 
-React hooks are a powerful feature that let you use state and other React features without writing classes. Here are some tips for using them effectively:
+Vue's reactivity system is built on proxies and tracks dependencies automatically. The key tools you will use are:
 
-## Rules of Hooks
+## Core Reactivity APIs
 
-1. **Only call hooks at the top level** of your component or custom hooks
-2. **Don't call hooks inside loops, conditions, or nested functions**
+- **ref()** – for primitive reactive values
+- **reactive()** – for objects
+- **computed()** – memoized derived values
+- **watch()** – respond to state changes
+- **watchEffect()** – run effects automatically
 
-## Common Hooks
+## Example of ref() and watchEffect()
 
-- **useState**: For local component state
-- **useEffect**: For side effects like data fetching
-- **useContext**: For consuming context
-- **useReducer**: For complex state logic
-- **useCallback**: For memoizing functions
-- **useMemo**: For memoizing values
+\`\`\`vue
+<script setup>
+import { ref, watchEffect } from "vue";
 
-## Example of useState and useEffect
+const userId = ref(1);
+const user = ref(null);
 
-\`\`\`jsx
-function ProfilePage({ userId }) {
-  const [user, setUser] = useState(null);
-  
-  useEffect(() => {
-    // This runs after render and when userId changes
-    fetchUser(userId).then(userData => {
-      setUser(userData);
-    });
-  }, [userId]);
-  
-  return user ? <Profile user={user} /> : <Loading />;
-}
+watchEffect(async () => {
+  user.value = await fetchUser(userId.value);
+});
+<\/script>
+
+<template>
+  <Profile v-if="user" :user="user" />
+  <Loading v-else />
+</template>
 \`\`\`
 
-Would you like me to explain any specific hook in more detail?`,
+Want deeper explanation of computed() and handling expensive logic?
+`,
       },
     ],
   },
@@ -221,17 +217,17 @@ Would you like me to explain any specific hook in more detail?`,
       {
         id: nanoid(),
         content:
-          'Yes, could you explain useCallback and useMemo in more detail? When should I use one over the other?',
+          'Yes, could you explain computed and function memoization in more detail? When should I use one over the other?',
       },
       {
         id: nanoid(),
         content:
-          'I\'m particularly interested in understanding the performance implications of useCallback and useMemo. Could you break down when each is most appropriate?',
+          'I\'m particularly interested in understanding the performance implications of computed and memoized functions in Vue. Could you break down when each is most appropriate?',
       },
       {
         id: nanoid(),
         content:
-          'Thanks for the overview! Could you dive deeper into the specific use cases where useCallback and useMemo make the biggest difference in React applications?',
+          'Thanks for the overview! Could you dive deeper into the specific use cases where computed and memoized functions make the biggest difference in Vue applications?',
       },
     ],
   },
@@ -239,69 +235,66 @@ Would you like me to explain any specific hook in more detail?`,
     key: nanoid(),
     from: 'assistant',
     reasoning: {
-      content: `The user is asking for a detailed explanation of useCallback and useMemo. I should provide a clear and concise explanation of each hook's purpose and how they differ.
-      
-The useCallback hook is used to memoize functions to prevent unnecessary re-renders of child components that receive functions as props.
+      content: `The user is asking for a detailed explanation of how Vue handles memoized values and reactive updates. I should provide a clear and concise explanation of each concept's purpose and how they differ.
 
-The useMemo hook is used to memoize values to avoid expensive recalculations on every render.
+The computed() function is used to create cached, derived values that only update when their reactive dependencies change.
 
-Both hooks help with performance optimization, but they serve different purposes.`,
+Regular functions inside setup() rely on Vue’s reactivity system and only run when the state they depend on changes.
+
+Both features help with performance optimization, but they serve different purposes.`,
       duration: 10,
     },
     versions: [
       {
         id: nanoid(),
-        content: `## useCallback vs useMemo
+        content: `## computed vs watch
 
-Both hooks help with **performance optimization**, but they serve _different purposes_:
+Both features help with _performance optimization_, but they serve different purposes:
 
-### useCallback
+### computed
 
-\`useCallback\` memoizes __functions__ to prevent unnecessary re-renders of child components that receive functions as props.
+\`computed\` memoizes **derived values** and only updates when their reactive dependencies change.
 
-\`\`\`jsx
-// Without useCallback - a new function is created on every render
-const handleClick = () => {
-  console.log(count);
-};
+\`\`\`ts
+// A simple reactive state
+const count = ref(0);
 
-// With useCallback - the function is only recreated when dependencies change
-const handleClick = useCallback(() => {
-  console.log(count);
-}, [count]);
+// Using computed - value is cached until 'count' changes
+const doubled = computed(() => count.value * 2);
 \`\`\`
 
-### useMemo
+### watch
 
-\`useMemo\` memoizes *values* to avoid expensive recalculations on every render.
+\`watch\` is used to run **side effects** in response to reactive state changes.
 
-\`\`\`jsx
-// Without useMemo - expensive calculation runs on every render
-const sortedList = expensiveSort(items);
-
-// With useMemo - calculation only runs when items change
-const sortedList = useMemo(() => expensiveSort(items), [items]);
+\`\`\`ts
+// Watching a value - function runs only when 'count' changes
+watch(count, (newValue) => {
+  console.log("Count changed:", newValue);
+});
 \`\`\`
 
 ### When to use which?
 
-- Use **useCallback** when:
-  - Passing callbacks to optimized child components that rely on reference equality
-  - Working with event handlers that you pass to child components
+- Use **computed** when:
+  - You need a cached, derived value
+  - You want something to behave like state but depend on other state
+  - You want to avoid recalculating expensive logic on every update
 
-- Use **useMemo** when:
-  - You have computationally expensive calculations
-  - You want to avoid recreating objects that are used as dependencies for other hooks
+- Use **watch** when:
+  - You need to run side effects (API calls, logging, syncing data)
+  - You want to respond to changes without returning a value
 
 ### Performance Note
 
-Don't overuse these hooks! They come with their own overhead. Only use them when you have identified a genuine performance issue.
+Don't overuse \`watch\` for things that should be computed values. \`computed\` is more efficient and should be preferred for derived state.
 
-### ~~Legacy Patterns~~
+### ~~Common Mistakes~~
 
-Remember that these ~~outdated approaches~~ should be avoided:
-- ~~Class components for simple state~~ - Use \`useState\` instead
-- ~~Manual event listener cleanup~~ - Let \`useEffect\` handle it`,
+Avoid these ~~anti-patterns~~ when using Vue reactivity:
+- ~~Doing heavy computation directly inside templates~~ — move logic to \`computed\`
+- Overusing \`watch\` for transformations that should be computed
+- Mutating reactive objects in ways Vue can't track (e.g., replacing arrays incorrectly)`,
       },
     ],
   },
@@ -315,7 +308,6 @@ const mockMessageResponses = [
   'That\'s definitely worth exploring. From what I can see, the best way to handle this is to consider both the theoretical aspects and practical implementation details.',
 ]
 
-// ------------------ Reactive state ------------------
 const model = ref<string>(models[0].id)
 const modelSelectorOpen = ref(false)
 const text = ref<string>('')
@@ -329,14 +321,6 @@ const selectedModelData = computed(() => models.find(m => m.id === model.value))
 
 const timers: (number | NodeJS.Timeout)[] = []
 
-// ------------------ Streaming helpers ------------------
-function sleep(ms: number) {
-  return new Promise((resolve) => {
-    const t = window.setTimeout(resolve, ms)
-    timers.push(t)
-  })
-}
-
 async function streamReasoning(messageKey: string, versionId: string, reasoningContent: string) {
   const words = reasoningContent.split(' ')
   let currentContent = ''
@@ -344,29 +328,21 @@ async function streamReasoning(messageKey: string, versionId: string, reasoningC
   for (let i = 0; i < words.length; i++) {
     currentContent += (i > 0 ? ' ' : '') + words[i]
 
-    messages.value = messages.value.map((msg) => {
-      if (msg.key === messageKey) {
-        return {
-          ...msg,
-          reasoning: msg.reasoning ? { ...msg.reasoning, content: currentContent } : undefined,
-        }
-      }
-      return msg
-    })
+    const msg = messages.value.find(m => m.key === messageKey)
+    if (msg && msg.reasoning) {
+      msg.reasoning.content = currentContent
+    }
 
-    await sleep(Math.random() * 30 + 20)
+    await new Promise(resolve =>
+      setTimeout(resolve, Math.random() * 30 + 20),
+    )
   }
 
-  messages.value = messages.value.map((msg) => {
-    if (msg.key === messageKey) {
-      return {
-        ...msg,
-        isReasoningComplete: true,
-        isReasoningStreaming: false,
-      }
-    }
-    return msg
-  })
+  const msg = messages.value.find(m => m.key === messageKey)
+  if (msg) {
+    msg.isReasoningComplete = true
+    msg.isReasoningStreaming = false
+  }
 }
 
 async function streamContent(messageKey: string, versionId: string, content: string) {
@@ -376,25 +352,24 @@ async function streamContent(messageKey: string, versionId: string, content: str
   for (let i = 0; i < words.length; i++) {
     currentContent += (i > 0 ? ' ' : '') + words[i]
 
-    messages.value = messages.value.map((msg) => {
-      if (msg.key === messageKey) {
-        return {
-          ...msg,
-          versions: msg.versions.map(v => (v.id === versionId ? { ...v, content: currentContent } : v)),
-        }
+    const msg = messages.value.find(m => m.key === messageKey)
+    if (msg) {
+      const version = msg.versions.find(v => v.id === versionId)
+      if (version) {
+        version.content = currentContent
       }
-      return msg
-    })
+    }
 
-    await sleep(Math.random() * 50 + 25)
+    await new Promise(resolve =>
+      setTimeout(resolve, Math.random() * 50 + 25),
+    )
   }
 
-  messages.value = messages.value.map((msg) => {
-    if (msg.key === messageKey) {
-      return { ...msg, isContentComplete: true }
-    }
-    return msg
-  })
+  // Mark content as complete
+  const msg = messages.value.find(m => m.key === messageKey)
+  if (msg) {
+    msg.isContentComplete = true
+  }
 }
 
 async function streamMessageResponse(
@@ -406,11 +381,13 @@ async function streamMessageResponse(
   status.value = 'streaming'
   streamingMessageId.value = versionId
 
+  // First stream the reasoning if it exists
   if (reasoning) {
     await streamReasoning(messageKey, versionId, reasoning.content)
-    await sleep(500)
+    await new Promise(resolve => setTimeout(resolve, 500)) // Pause
   }
 
+  // Then stream the content
   await streamContent(messageKey, versionId, content)
 
   status.value = 'ready'
@@ -495,6 +472,7 @@ function addUserMessage(content: string) {
   timers.push(timer)
 }
 
+let timer: NodeJS.Timeout
 onMounted(() => {
   messages.value = []
 
@@ -503,20 +481,20 @@ onMounted(() => {
       await streamMessage(mockMessages[i])
 
       if (i < mockMessages.length - 1) {
-        await sleep(1000)
+        await new Promise(resolve => setTimeout(resolve, 1000))
       }
     }
   }
 
-  const timer = setTimeout(() => {
+  timer = setTimeout(() => {
     processMessages()
   }, 100)
-  timers.push(timer)
 })
 
 onBeforeUnmount(() => {
-  timers.forEach(t => clearTimeout(t))
-  messages.value = []
+  // timers.forEach(t => clearTimeout(t))
+  // messages.value = []
+  clearTimeout(timer)
 })
 
 function handleSubmit(message: PromptInputMessage) {
@@ -540,7 +518,7 @@ function handleFileAction(action: string) {
 </script>
 
 <template>
-  <div class="relative flex size-full flex-col divide-y overflow-hidden bg-secondary">
+  <div class="relative flex size-full flex-col divide-y overflow-hidden">
     <div class="h-[498px] overflow-y-scroll">
       <Conversation>
         <ConversationContent>

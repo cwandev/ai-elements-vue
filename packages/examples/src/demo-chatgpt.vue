@@ -1,4 +1,3 @@
-<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import type { PromptInputMessage } from '@repo/elements/prompt-input'
 import type { ToolUIPart } from 'ai'
@@ -95,7 +94,7 @@ const mockMessages: MessageType[] = [
     versions: [
       {
         id: nanoid(),
-        content: 'Can you explain how to use React hooks effectively?',
+        content: 'Can you explain how to use Vue reactivity effectively?',
       },
     ],
   },
@@ -104,40 +103,40 @@ const mockMessages: MessageType[] = [
     from: 'assistant',
     sources: [
       {
-        href: 'https://react.dev/reference/react',
-        title: 'React Documentation',
+        href: 'https://vuejs.org/api/reactivity-core.html',
+        title: 'Vue Reactivity Core',
       },
       {
-        href: 'https://react.dev/reference/react-dom',
-        title: 'React DOM Documentation',
+        href: 'https://vuejs.org/guide/extras/composition-api-faq.html',
+        title: 'Composition API FAQ',
       },
     ],
     tools: [
       {
         name: 'mcp',
-        description: 'Searching React documentation',
-        status: 'input-available',
+        description: 'Searching Vue documentation',
+        status: 'input-available' as ToolUIPart['state'],
         parameters: {
-          query: 'React hooks best practices',
-          source: 'react.dev',
+          query: 'Vue reactivity best practices',
+          source: 'vuejs.org',
         },
         result: `{
-  "query": "React hooks best practices",
+  "query": "Vue reactivity best practices",
   "results": [
     {
-      "title": "Rules of Hooks",
-      "url": "https://react.dev/warnings/invalid-hook-call-warning",
-      "snippet": "Hooks must be called at the top level of your React function components or custom hooks. Don't call hooks inside loops, conditions, or nested functions."
+      "title": "Reactivity Core",
+      "url": "https://vuejs.org/api/reactivity-core.html",
+      "snippet": "Reactivity Core is a set of core APIs for creating reactive data in Vue. It provides the basic building blocks for creating reactive data in Vue."
+    },
+     {
+      "title": "Computed Properties",
+      "url": "https://vuejs.org/guide/essentials/computed.html",
+      "snippet": "Computed properties are cached based on their dependencies and only re-evaluate when necessary."
     },
     {
-      "title": "useState Hook",
-      "url": "https://react.dev/reference/react/useState",
-      "snippet": "useState is a React Hook that lets you add state to your function components. It returns an array with two values: the current state and a function to update it."
-    },
-    {
-      "title": "useEffect Hook",
-      "url": "https://react.dev/reference/react/useEffect",
-      "snippet": "useEffect lets you synchronize a component with external systems. It runs after render and can be used to perform side effects like data fetching."
+      "title": "Watchers",
+      "url": "https://vuejs.org/guide/essentials/watchers.html",
+      "snippet": "Watch is used to perform side effects in response to reactive state changes."
     }
   ]
 }`,
@@ -147,42 +146,45 @@ const mockMessages: MessageType[] = [
     versions: [
       {
         id: nanoid(),
-        content: `# React Hooks Best Practices
+        content: `# Vue Reactivity Best Practices
 
-React hooks are a powerful feature that let you use state and other React features without writing classes. Here are some tips for using them effectively:
+Vue reactivity is a powerful feature that let you use state and other Vue features without writing classes. Here are some tips for using them effectively:
 
-## Rules of Hooks
+## Rules of Reactivity
 
-1. **Only call hooks at the top level** of your component or custom hooks
-2. **Don't call hooks inside loops, conditions, or nested functions**
+1. **Only call reactivity at the top level** of your component or custom hooks
+2. **Don't call reactivity inside loops, conditions, or nested functions**
 
-## Common Hooks
+## Core Reactivity APIs
 
-- **useState**: For local component state
-- **useEffect**: For side effects like data fetching
-- **useContext**: For consuming context
-- **useReducer**: For complex state logic
-- **useCallback**: For memoizing functions
-- **useMemo**: For memoizing values
+- **ref()** – for primitive reactive values
+- **reactive()** – for objects
+- **computed()** – memoized derived values
+- **watch()** – respond to state changes
+- **watchEffect()** – run effects automatically
 
-## Example of useState and useEffect
+## Example of ref() and watchEffect()
 
-\`\`\`jsx
-function ProfilePage({ userId }) {
-  const [user, setUser] = useState(null);
-  
-  useEffect(() => {
-    // This runs after render and when userId changes
-    fetchUser(userId).then(userData => {
-      setUser(userData);
-    });
-  }, [userId]);
-  
-  return user ? <Profile user={user} /> : <Loading />;
-}
+\`\`\`vue
+<script setup>
+import { ref, watchEffect } from "vue";
+
+const userId = ref(1);
+const user = ref(null);
+
+watchEffect(async () => {
+  user.value = await fetchUser(userId.value);
+});
+<\/script>
+
+<template>
+  <Profile v-if="user" :user="user" />
+  <Loading v-else />
+</template>
 \`\`\`
 
-Would you like me to explain any specific hook in more detail?`,
+Want deeper explanation of computed() and handling expensive logic?
+`,
       },
     ],
   },
@@ -193,17 +195,17 @@ Would you like me to explain any specific hook in more detail?`,
       {
         id: nanoid(),
         content:
-          'Yes, could you explain useCallback and useMemo in more detail? When should I use one over the other?',
+          'Yes, could you explain computed and function memoization in more detail? When should I use one over the other?',
       },
       {
         id: nanoid(),
         content:
-          'I\'m particularly interested in understanding the performance implications of useCallback and useMemo. Could you break down when each is most appropriate?',
+          'I\'m particularly interested in understanding the performance implications of computed and memoized functions in Vue. Could you break down when each is most appropriate?',
       },
       {
         id: nanoid(),
         content:
-          'Thanks for the overview! Could you dive deeper into the specific use cases where useCallback and useMemo make the biggest difference in React applications?',
+          'Thanks for the overview! Could you dive deeper into the specific use cases where computed and memoized functions make the biggest difference in Vue applications?',
       },
     ],
   },
@@ -211,67 +213,67 @@ Would you like me to explain any specific hook in more detail?`,
     key: nanoid(),
     from: 'assistant',
     reasoning: {
-      content: `The user is asking for a detailed explanation of useCallback and useMemo. I should provide a clear and concise explanation of each hook's purpose and how they differ.
-      
-The useCallback hook is used to memoize functions to prevent unnecessary re-renders of child components that receive functions as props.
+      content: `The user is asking for a detailed explanation of how Vue handles memoized values and reactive updates. I should provide a clear and concise explanation of each concept's purpose and how they differ.
 
-The useMemo hook is used to memoize values to avoid expensive recalculations on every render.
+The computed() function is used to create cached, derived values that only update when their reactive dependencies change.
 
-Both hooks help with performance optimization, but they serve different purposes.`,
+Regular functions inside setup() rely on Vue’s reactivity system and only run when the state they depend on changes.
+
+Both features help with performance optimization, but they serve different purposes.`,
       duration: 10,
     },
     versions: [
       {
         id: nanoid(),
-        content: `## useCallback vs useMemo
+        content: `## computed vs watch
 
-Both hooks help with *performance optimization*, but they serve different purposes:
+Both features help with _performance optimization_, but they serve different purposes:
 
-### useCallback
+### computed
 
-\`useCallback\` memoizes **functions** to prevent unnecessary re-renders of child components that receive functions as props.
+\`computed\` memoizes **derived values** and only updates when their reactive dependencies change.
 
-\`\`\`jsx
-// Without useCallback - a new function is created on every render
-const handleClick = () => {
-  console.log(count);
-};
+\`\`\`ts
+// A simple reactive state
+const count = ref(0);
 
-// With useCallback - the function is only recreated when dependencies change
-const handleClick = useCallback(() => {
-  console.log(count);
-}, [count]);
+// Using computed - value is cached until 'count' changes
+const doubled = computed(() => count.value * 2);
 \`\`\`
 
-### useMemo
+### watch
 
-\`useMemo\` memoizes **values** to avoid expensive recalculations on every render.
+\`watch\` is used to run **side effects** in response to reactive state changes.
 
-\`\`\`jsx
-// Without useMemo - expensive calculation runs on every render
-const sortedList = expensiveSort(items);
-
-// With useMemo - calculation only runs when items change
-const sortedList = useMemo(() => expensiveSort(items), [items]);
+\`\`\`ts
+// Watching a value - function runs only when 'count' changes
+watch(count, (newValue) => {
+  console.log("Count changed:", newValue);
+});
 \`\`\`
 
 ### When to use which?
 
-- Use **useCallback** when:
-  - Passing callbacks to optimized child components that rely on reference equality
-  - Working with event handlers that you pass to child components
+- Use **computed** when:
+  - You need a cached, derived value
+  - You want something to behave like state but depend on other state
+  - You want to avoid recalculating expensive logic on every update
 
-- Use **useMemo** when:
-  - You have computationally expensive calculations
-  - You want to avoid recreating objects that are used as dependencies for other hooks
+- Use **watch** when:
+  - You need to run side effects (API calls, logging, syncing data)
+  - You want to respond to changes without returning a value
 
 ### Performance Note
 
-Don't overuse these hooks! They come with their own overhead. Only use them when you have identified a genuine performance issue.
+Don't overuse \`watch\` for things that should be computed values. \`computed\` is more efficient and should be preferred for derived state.
 
-### ~~Deprecated Methods~~
+### ~~Common Mistakes~~
 
-Note that ~~class-based lifecycle methods~~ like \`componentDidMount\` are now replaced by the \`useEffect\` hook in modern React development.`,
+Avoid these ~~anti-patterns~~ when using Vue reactivity:
+- ~~Doing heavy computation directly inside templates~~ — move logic to \`computed\`
+- Overusing \`watch\` for transformations that should be computed
+- Mutating reactive objects in ways Vue can't track (e.g., replacing arrays incorrectly)`,
+
       },
     ],
   },
@@ -474,7 +476,6 @@ function handleSubmit(message: PromptInputMessage) {
 }
 
 function handleFileAction(action: string) {
-  console.log('hello')
   toast.success('File action', {
     description: action,
   })
@@ -485,7 +486,7 @@ function handleSuggestionClick(suggestion: string) {
   addUserMessage(suggestion)
 }
 
-let initTimer: any
+let initTimer: NodeJS.Timeout
 
 onMounted(() => {
   // Reset state on mount to ensure fresh component

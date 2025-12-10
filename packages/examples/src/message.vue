@@ -72,7 +72,7 @@ const messages: {
         type: 'file',
         url: '',
         mediaType: 'application/pdf',
-        filename: 'react-hooks-guide.pdf',
+        filename: 'vue-compositions-guide.pdf',
       },
     ],
   },
