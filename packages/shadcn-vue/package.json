@@ -1,6 +1,6 @@
 {
   "name": "@repo/shadcn-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "@tailwindcss/vite": "catalog:tooling",
